@@ -1,5 +1,6 @@
 package com.example.pertemuan5
 
+import android.R.attr.label
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
@@ -15,21 +16,32 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun FormDataDiri(modifier: Modifier){
+fun FormDataDiri(modifier: Modifier) {
     //variabel-variabel untuk mengingat nilai masukan dari keyboard
-    var textNama by remember {mutableStateOf("")}
-    var textAlamat by remember {mutableStateOf("")}
-    var textJK by remember {mutableStateOf("")}
-    val gender:List<String> = listOf("Laki-laki","Perempuan")
+    var textNama by remember { mutableStateOf("") }
+    var textAlamat by remember { mutableStateOf("") }
+    var textJK by remember { mutableStateOf("") }
+    val gender: List<String> = listOf("Laki-laki", "Perempuan")
 
     //variabel-variabel untuk menyimpan data yang diperoleh dari komponen UI
-    var nama by remember {mutableStateOf("")}
-    var alamat by remember {mutableStateOf("")}
-    var jenis by remember {mutableStateOf("")}
-    Column(modifier = Modifier.padding(top = 50.dp),
+    var nama by remember { mutableStateOf("") }
+    var alamat by remember { mutableStateOf("") }
+    var jenis by remember { mutableStateOf("") }
+    Column(
+        modifier = Modifier.padding(top = 50.dp),
         verticalArrangement = Arrangement.Top,
-        horizontalAlignment = Alignment.CenterHorizontally) {
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
         OutlinedTextField(
             value = textNama,
             singleLine = true,
             shape = MaterialTheme.shapes.large,
+            modifier = ModifierTheme.shapes.large,
+            label = { Text(text = "Nama Lengkap") },
+            onValueChange = {
+                textNama = it
+            }
+        )
+
+    }
+}
