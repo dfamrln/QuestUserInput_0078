@@ -11,6 +11,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.selection.selectable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -42,6 +43,13 @@ fun FormDataDiri(modifier: Modifier) {
                 textNama = it
             }
         )
-
+        Row {
+            gender.forEach { item ->
+                Row(modifier = Modifier.selectable(
+                    selected =  textJK ==item,
+                    onClick = { textJK = item }
+                )
+            }
+        }
     }
 }
